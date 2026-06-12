@@ -23,9 +23,12 @@ struct RulerView: View {
                 .background(Color(uiColor: .systemBackground))
                 .contentShape(Rectangle())
                 .gesture(
-                    DragGesture(minimumDistance: 0)
+                    // A non-zero minimumDistance lets a stationary tap fall through
+                    // to the on-screen buttons (info / unit / grid) that sit above
+                    // this full-screen surface; a deliberate drag still measures.
+                    // Sticky: the last point stays on lift so the reading remains.
+                    DragGesture(minimumDistance: 10)
                         .onChanged { value in state.cursorLocal = value.location }
-                    // Sticky: keep the last point on lift so the reading stays visible.
                 )
                 .onContinuousHover { phase in
                     switch phase {
