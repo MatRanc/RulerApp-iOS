@@ -1,8 +1,10 @@
 import SwiftUI
 
 /// Full-screen measuring surface: the metric/imperial ticks, optional grid, and
-/// a draggable crosshair with a live X/Y readout. Fills the whole screen
-/// (ignoring safe areas) so the ruler origin is the true top-left corner.
+/// a draggable crosshair with a live X/Y readout. Bleeds edge-to-edge on the
+/// sides and bottom so those ruler origins are the true edge, but respects the
+/// top safe area so the origin sits just below the notch / Dynamic Island
+/// instead of being hidden behind it.
 struct RulerView: View {
     @ObservedObject var state: RulerState
 
@@ -20,7 +22,6 @@ struct RulerView: View {
                         drawCrosshair(at: p, size: size, into: &context)
                     }
                 }
-                .background(Color(uiColor: .systemBackground))
                 .contentShape(Rectangle())
                 .gesture(
                     // A non-zero minimumDistance lets a stationary tap fall through
@@ -40,7 +41,12 @@ struct RulerView: View {
                 cursorBadge(in: geo.size, pointsPerMm: ppm, unit: unit)
             }
         }
-        .ignoresSafeArea()
+        // Respect the top safe area so the ruler's origin is pushed below the
+        // notch / Dynamic Island; still bleed past the sides and bottom so
+        // those origins stay at the true screen edge. The background ignores
+        // all edges so the buffer strip above the ruler fills seamlessly.
+        .ignoresSafeArea(edges: [.horizontal, .bottom])
+        .background(Color(uiColor: .systemBackground).ignoresSafeArea())
     }
 
     // MARK: - Cursor badge
