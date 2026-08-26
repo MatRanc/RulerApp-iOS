@@ -6,7 +6,7 @@ screen and read its size off the ruler — in centimeters, inches, or both.
 This is the iOS/iPadOS port of the macOS [RulerApp](https://github.com/MatRanc/RulerApp).
 A single universal app runs on both iPhone and iPad.
 
-<img src="docs/screenshot.png" width="400" />
+<img src="docs/screenshot.png" width="100%" />
 
 ## Build & run
 
