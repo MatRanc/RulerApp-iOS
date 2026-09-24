@@ -1,5 +1,7 @@
 # Ruler (iOS)
 
+**[Download on the App Store](https://apps.apple.com/app/id6771221433)**
+
 An on-screen ruler for iPhone and iPad. Hold a physical object against the
 screen and read its size off the ruler — in centimeters, inches, or both.
 
