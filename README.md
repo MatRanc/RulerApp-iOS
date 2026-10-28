@@ -53,3 +53,7 @@ the screen are physically clipped — measure from a flat edge for best results.
 - `Sources/RulerApp/DeviceModel.swift`, `DisplayMetrics.swift` — physical scale.
 - `Sources/RulerApp/AboutView.swift` — About sheet.
 - `project.yml` — XcodeGen project definition (universal iOS app, iOS 16+).
+
+## License
+
+[GNU Affero General Public License v3.0 with Apple App Store Exception](LICENSE)
